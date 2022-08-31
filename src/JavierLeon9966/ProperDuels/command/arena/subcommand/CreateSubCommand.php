@@ -19,11 +19,11 @@ class CreateSubCommand extends BaseSubCommand{
 
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void{
 		if(!$this->plugin instanceof ProperDuels){
-			throw new \UnexpectedValueException('This command wasn\'t created by ' . ProperDuels::class);
+			throw new \UnexpectedValueException('§9§l» §r§cThis command was not created by§e ' . ProperDuels::class);
 		}
 		$arenaManager = $this->plugin->getArenaManager();
 		if($arenaManager->has($args['arena'])){
-			$sender->sendMessage(TextFormat::RED."An arena with the name '$args[arena]' already exists");
+			$sender->sendMessage(TextFormat::RED."§9§l» §r§cAn arena with the name '$args[arena]' already exists");
 			return;
 		}
 
@@ -34,14 +34,14 @@ class CreateSubCommand extends BaseSubCommand{
 		foreach(['firstSpawnPos', 'secondSpawnPos'] as $spawn){
 			$pos = $args[$spawn]->floor();
 			if(!$world->isInWorld((int)$pos->x, (int)$pos->y, (int)$pos->z)){
-				$sender->sendMessage(TextFormat::RED.'Cannot set positions outside of the world');
+				$sender->sendMessage(TextFormat::RED.'§9§l» §r§cCannot set positions outside of the world');
 				return;
 			}
 		}
 
 		$kitManager = $this->plugin->getKitManager();
 		if(isset($args['kit']) and !$kitManager->has($args['kit'])){
-			$sender->sendMessage(TextFormat::RED."No kit was found by the name '$args[kit]'");
+			$sender->sendMessage(TextFormat::RED."§9§l» §r§cNo kit was found by the name '$args[kit]'");
 			return;
 		}
 
@@ -52,7 +52,7 @@ class CreateSubCommand extends BaseSubCommand{
 			$args['secondSpawnPos'],
 			$args['kit'] ?? null
 		));
-		$sender->sendMessage("Added new arena '$args[arena]' successfully");
+		$sender->sendMessage("§9§l» §r§aAdded new arena '$args[arena]' successfully");
 	}
 
 	public function prepare(): void{
