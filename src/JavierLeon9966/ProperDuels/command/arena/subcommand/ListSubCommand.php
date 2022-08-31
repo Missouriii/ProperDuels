@@ -20,11 +20,11 @@ class ListSubCommand extends BaseSubCommand{
 		$arenas = array_keys($this->plugin->getArenaManager()->all());
 		$count = count($arenas);
 		if($count === 0){
-			$sender->sendMessage(TextFormat::RED.'There are no arenas');
+			$sender->sendMessage(TextFormat::RED.'§9§l» §r§cThere are no arenas');
 			return;
 		}
 
-		$sender->sendMessage("There are $count arena(s):");
+		$sender->sendMessage("§9§l» §r§aThere are §e$count §aarena(s):");
 		$sender->sendMessage(implode(", ", $arenas));
 	}
 
