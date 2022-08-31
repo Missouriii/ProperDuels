@@ -25,7 +25,7 @@ class DeleteSubCommand extends BaseSubCommand{
 		}
 
 		$arenaManager->remove($args['arena']);
-		$sender->sendMessage("§9§l» §r§cRemoved arena '$args[arena]' successfully");
+		$sender->sendMessage("§9§l» §r§aRemoved arena '$args[arena]' successfully");
 	}
 
 	public function prepare(): void{
