@@ -16,16 +16,16 @@ class DeleteSubCommand extends BaseSubCommand{
 
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void{
 		if(!$this->plugin instanceof ProperDuels){
-			throw new \UnexpectedValueException('This command wasn\'t created by ' . ProperDuels::class);
+			throw new \UnexpectedValueException('§9§l» §r§cThis command was not created by ' . ProperDuels::class);
 		}
 		$arenaManager = $this->plugin->getArenaManager();
 		if(!$arenaManager->has($args['arena'])){
-			$sender->sendMessage(TextFormat::RED."No arena was found by the name '$args[arena]'");
+			$sender->sendMessage(TextFormat::RED."§9§l» §r§cNo arena was found by the name '$args[arena]'");
 			return;
 		}
 
 		$arenaManager->remove($args['arena']);
-		$sender->sendMessage("Removed arena '$args[arena]' successfully");
+		$sender->sendMessage("§9§l» §r§cRemoved arena '$args[arena]' successfully");
 	}
 
 	public function prepare(): void{
