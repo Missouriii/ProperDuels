@@ -122,7 +122,7 @@ final class Game{
 
 			if($countdown > 0 and $this->started){
 				foreach($this->sessions as $session){
-					$session->getPlayer()->sendMessage(str_replace('§9§l» §r{seconds}', (string)$countdown, $config->getNested('match.countdown.message')));
+					$session->getPlayer()->sendMessage(str_replace('{seconds}', (string)$countdown, $config->getNested('match.countdown.message')));
 				}
 
 				--$countdown;
