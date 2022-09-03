@@ -20,12 +20,12 @@ class DeleteSubCommand extends BaseSubCommand{
 		}
 		$kitManager = $this->plugin->getKitManager();
 		if(!$kitManager->has($args['kit'])){
-			$sender->sendMessage(TextFormat::RED."No kit was found by the name '$args[kit]'");
+			$sender->sendMessage(TextFormat::RED."§9§l» §r§cNo kit was found by the name '$args[kit]'");
 			return;
 		}
 
 		$kitManager->remove($args['kit']);
-		$sender->sendMessage("Removed kit '$args[kit]' successfully");
+		$sender->sendMessage("§9§l» §r§aRemoved kit '$args[kit]' successfully");
 	}
 
 	public function prepare(): void{
