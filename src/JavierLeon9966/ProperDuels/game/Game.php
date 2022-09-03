@@ -105,11 +105,6 @@ final class Game{
 			
 			$player->getEffects()->clear();
 			$player->setHealth($player->getMaxHealth());
-			
-			$playername = $player->getName();    
-			    
-			Server::getInstance()->getCommandMap()->dispatch($player, "givemoney $playername 30"); 
-			Server::getInstance()->getCommandMap()->dispatch($player, "duel queue");     
 			    
 			foreach($player->getAttributeMap()->getAll() as $attr){
 				$attr->resetToDefault();
@@ -175,6 +170,18 @@ final class Game{
 			$player->getInventory()->setContents($info->getInventory());
 
 			$player->getXpManager()->setCurrentTotalXp($info->getTotalXp());
+			
+			$player->getInventory()->clearAll();
+			$player->getArmorInventory()->clearAll();
+			$player->getCursorInventory()->clearAll();
+			$player->getEffects()->clear();
+			
+			$winner = GameFinishEvent::getWinner($player);
+			
+			// } else {
+			
+			Server::getInstance()->getCommandMap()->dispatch($winner, "givemoney $playername 30"); 
+			Server::getInstance()->getCommandMap()->dispatch($player, "duel queue");  
 
 			if($session !== $defeated){
 				$player->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
