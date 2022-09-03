@@ -29,30 +29,30 @@ class QueueSubCommand extends BaseSubCommand{
 		if(isset($args['arena'])){
 			$arena = $arenaManager->get($args['arena']);
 			if($arena === null){
-				$sender->sendMessage(TextFormat::RED."No arena was found by the name '$args[arena]'");
+				$sender->sendMessage(TextFormat::RED."§9§l» §r§cNo arena was found by the name:§e '$args[arena]'");
 				return;
 			}
 
 			if($queueManager->has($rawUUID)){
-				$sender->sendMessage(TextFormat::RED.'You are already in a queue');
+				$sender->sendMessage(TextFormat::RED.'§9§l» §r§cYou are already in a queue!');
 				return;
 			}
 
 			$queueManager->add($rawUUID, $arena);
-			$sender->sendMessage('Successfully added into the queue');
+			$sender->sendMessage('§9§l» §r§aQueued!');
 			return;
 		}elseif($queueManager->has($rawUUID)){
 			$queueManager->remove($rawUUID);
-			$sender->sendMessage('Successfully removed from the queue');
+			$sender->sendMessage('§9§l» §r§aSuccessfully removed from the queue');
 			return;
 		}
 
 		if(count($arenaManager->all()) === 0){
-			$sender->sendMessage(TextFormat::RED.'There are no existing arenas');
+			$sender->sendMessage(TextFormat::RED.'§9§l» §r§cThere are no existing arenas');
 			return;
 		}
 		$queueManager->add($rawUUID);
-		$sender->sendMessage('Successfully added into the queue');
+		$sender->sendMessage('§9§l» §r§aQueued!');
 	}
 
 	public function prepare(): void{
