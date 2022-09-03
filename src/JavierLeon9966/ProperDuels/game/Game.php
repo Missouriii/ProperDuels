@@ -176,11 +176,11 @@ final class Game{
 			$player->getCursorInventory()->clearAll();
 			$player->getEffects()->clear();
 			
-			$winner = GameFinishEvent::getWinner();
+			$finishev = new GameFinishEvent($this, $session->getPlayer(), $defeated->getPlayer()))->call();
 			
 			// } else {
 			
-			Server::getInstance()->getCommandMap()->dispatch($winner, "givemoney $winner 30"); 
+			Server::getInstance()->getCommandMap()->dispatch($winner, "givemoney {$finishev->getWinner()->getName()} 30"); 
 			Server::getInstance()->getCommandMap()->dispatch($player, "duel queue");  
 
 			if($session !== $defeated){
