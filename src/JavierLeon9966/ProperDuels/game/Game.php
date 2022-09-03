@@ -21,6 +21,8 @@ final class Game{
 	private $started = false;
 
 	private $sessions;
+	
+	private $players = [];
 
 	public function __construct(Arena $arena, array $sessions){
 		$this->arena = $arena;
@@ -81,8 +83,9 @@ final class Game{
 		];
 
 		foreach($this->sessions as $session){
+		    foreach($this->players as $player);
 			$session->setGame($this);
-
+                     
 			$player = $session->getPlayer();
 			$session->saveInfo();
 
@@ -107,6 +110,7 @@ final class Game{
 			}
 
 			$player->setImmobile();
+	            }
 		}
 
 		ProperDuels::getInstance()->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() use($config): void{
