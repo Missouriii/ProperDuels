@@ -176,7 +176,7 @@ final class Game{
 			$player->getCursorInventory()->clearAll();
 			$player->getEffects()->clear();
 			
-			$winner = GameFinishEvent::getWinner($player);
+			$winner = GameFinishEvent::getWinner();
 			
 			// } else {
 			
