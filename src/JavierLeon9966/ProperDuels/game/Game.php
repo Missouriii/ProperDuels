@@ -176,7 +176,7 @@ final class Game{
 			$player->getCursorInventory()->clearAll();
 			$player->getEffects()->clear();
 			
-			$finishev = new GameFinishEvent($this, $session->getPlayer(), $defeated->getPlayer()))->call();
+			$finishev = new GameFinishEvent($this, $session->getPlayer(), $defeated->getPlayer()))->call());
 			
 			// } else {
 			
