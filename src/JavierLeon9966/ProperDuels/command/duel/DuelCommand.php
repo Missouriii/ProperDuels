@@ -50,7 +50,7 @@ class DuelCommand extends BaseCommand{
 		
 		$arenaManager = $this->plugin->getArenaManager();
 		if(isset($args['arena']) and !$arenaManager->has($args['arena'])){
-			$sender->sendMessage(TextFormat::RED."No arena was found by the name '$args[arena]'");
+			$sender->sendMessage(TextFormat::RED."§9§l» §r§cNo arena was found by the name '$args[arena]'");
 			return;
 		}
 		
