@@ -172,11 +172,7 @@ final class Game{
 			$player->getCursorInventory()->clearAll();
 			$player->getEffects()->clear();
 			
-			$winner = $player;
-			
-			// } else {
-			
-			Server::getInstance()->getCommandMap()->dispatch($winner, "givemoney {$winner->getName} 30"); 
+			Server::getInstance()->getCommandMap()->dispatch($player, "givemoney {$player->getName()} 30"); 
 			Server::getInstance()->getCommandMap()->dispatch($player, "duel queue");  
 
 			if($session !== $defeated){
