@@ -20,11 +20,11 @@ class ListSubCommand extends BaseSubCommand{
 		$kits = array_keys($this->plugin->getkitManager()->all());
 		$count = count($kits);
 		if($count === 0){
-			$sender->sendMessage(TextFormat::RED.'There are no kits');
+			$sender->sendMessage(TextFormat::RED.'§9§l» §r§cThere are no kits');
 			return;
 		}
 
-		$sender->sendMessage("There are $count kit(s):");
+		$sender->sendMessage("§9§l» §r§eThere are $count kit(s):");
 		$sender->sendMessage(implode(", ", $kits));
 	}
 
