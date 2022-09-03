@@ -167,7 +167,7 @@ final class Game{
 			$player->getXpManager()->setCurrentTotalXp($info->getTotalXp());
 
 			if($session !== $defeated){
-				$player->teleport($player->getSpawn());
+				$player->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
 
 				if($defeated !== null){
 					$player->getServer()->broadcastMessage(str_replace(
