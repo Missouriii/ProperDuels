@@ -14,6 +14,7 @@ use JavierLeon9966\ProperDuels\session\Session;
 use pocketmine\world\Position;
 use pocketmine\scheduler\{CancelTaskException, ClosureTask};
 use pocketmine\utils\Utils;
+use pocketmine\Server;
 
 final class Game{
 	private $arena;
@@ -83,7 +84,7 @@ final class Game{
 		];
 
 		foreach($this->sessions as $session){
-		    foreach($this->players as $player);
+		    foreach($this->players as $player){
 			$session->setGame($this);
                      
 			$player = $session->getPlayer();
@@ -105,6 +106,11 @@ final class Game{
 			$player->getEffects()->clear();
 			$player->setHealth($player->getMaxHealth());
 			
+			$playername = $player->getName();    
+			    
+			Server::getInstance()->getCommandMap()->dispatch($player, "givemoney $playername 30"); 
+			Server::getInstance()->getCommandMap()->dispatch($player, "duel queue");     
+			    
 			foreach($player->getAttributeMap()->getAll() as $attr){
 				$attr->resetToDefault();
 			}
