@@ -108,7 +108,6 @@ final class Game{
 			}
 
 			$player->setImmobile();
-	            }
 		}
 
 		ProperDuels::getInstance()->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() use($config): void{
