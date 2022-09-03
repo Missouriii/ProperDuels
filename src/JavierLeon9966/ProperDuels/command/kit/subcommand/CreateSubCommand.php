@@ -23,7 +23,7 @@ class CreateSubCommand extends BaseSubCommand{
 		}
 		$kitManager = $this->plugin->getKitManager();
 		if($kitManager->has($args['kit'])){
-			$sender->sendMessage(TextFormat::RED."A kit with the name '$args[kit]' already exists");
+			$sender->sendMessage(TextFormat::RED."§9§l» §r§cA kit with the name '$args[kit]' already exists");
 			return;
 		}
 
@@ -35,7 +35,7 @@ class CreateSubCommand extends BaseSubCommand{
 			$sender->getArmorInventory()->getContents(),
 			$sender->getInventory()->getContents()
 		));
-		$sender->sendMessage("Added new kit '$args[kit]' successfully");
+		$sender->sendMessage("§9§l» §r§aAdded new kit '$args[kit]' successfully");
 	}
 
 	public function prepare(): void{
